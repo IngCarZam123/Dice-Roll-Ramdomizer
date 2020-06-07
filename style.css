@@ -1,0 +1,28 @@
+body  {
+	background: url("http://getwallpapers.com/wallpaper/full/5/f/f/95955.jpg") no-repeat center center fixed;
+	background-size: cover;
+	color: white;
+	width: 50%
+}
+
+div {
+	border: 10px solid grey;
+	color: rgba(255,255,255,0.5);
+}
+
+h2 {
+	text-align: center
+}
+
+header {
+	font-size: 175%;
+	
+
+}
+
+
+#dice {
+	color: red;
+	background-image: url(https://irlandairlanda.files.wordpress.com/2016/07/llamas.gif);
+	background-size: cover;	
+}

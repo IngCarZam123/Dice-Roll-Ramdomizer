@@ -1,59 +1,75 @@
 
-var poolDeDados = [
-    {nombre: "d4", caras: 4},{nombre: "d6", caras: 6},{nombre: "d8", caras: 8},
-    {nombre: "d10", caras: 10},{nombre: "d12", caras: 12},
-    {nombre: "d20", caras: 20},{nombre: "d100", caras: 100}
-    ];
-
-function encontrarTipo(nombre) {
-    for (var i = 0; i <= poolDeDados.length; i++) {
-        if (poolDeDados[i].nombre === tipoDeDado) {
-            var max = Number(poolDeDados[i].caras);
-            //console.log(poolDeDados[i].nombre, poolDeDados[i].caras);
-            //console.log(max);
 
 
-            return Number(max);
-        }
+var h3 = document.querySelector("h3");
+var h5 = document.querySelector("h5");
+
+// input de Usuario
+  var tipoDeDado = document.getElementById("diceSelector");
+  var cantidadDeDados = document.getElementById("cantidad");
+  var rollButton = document.getElementById("rollButton");
+  var options = document.getElementsByTagName("option");
+  var carasXGlobal = 0;
+
+tipoDeDado.addEventListener("input", createDXValue);
+function createDXValue() {
+
+    if (tipoDeDado.value === "x") {
+        h5.innerHTML = h5.innerHTML + '<input type="number" min="1" max="1000" placeholder="Dado Custom" id="caraX">';
+        var carasXLocal = document.getElementById("caraX");
+        carasXGlobal = carasXLocal;
+    } else {
+        carasXGlobal.remove();
+        carasXGlobal.value = 0;
     }
-    return false;
 }
 
 
-var tipoDeDado = prompt("Escoge un tipo de dado: d4, d6, d8, d10, d12, d20, d100");
-var cantidadDeDados = prompt("Cuantos lanzas?");
+// HAY QUE MODIFICARLO!!!! PARA APLICAR TANTO DADOX COMO VALORES DE SELECT
 
-encontrarTipo(tipoDeDado);
-
-
-
-function randomizar(cantidadDeDados,encontrarTipo) {  
-    if (!isNaN(cantidadDeDados)) {
-        for (var i = 0; i < cantidadDeDados; i++) {
-        var lanzada = Math.round(Math.random()*(encontrarTipo(tipoDeDado)-1)+1);
+rollButton.addEventListener("click", randomizar);
+function randomizar() {
+    
+    if (!isNaN(cantidadDeDados.value) && tipoDeDado.value === "x") {
+        for (var i = 0; i < cantidadDeDados.value; i++) {
+        var lanzada = Math.round(Math.random()*(carasXGlobal.value-1)+1);
         console.log(Number(lanzada));
-        //var lanzadasUser = [lanzadasUser] + [lanzada] + " + ";
             if (lanzadasUser === undefined) {
-            var lanzadasUser = [1,2];
+            var lanzadasUser = [];
             lanzadasUser.push(lanzada);
             } else {
-                lanzadasUser.push(lanzada)
+                lanzadasUser.push(lanzada);
             }
-
-        } 
-        lanzadasUser.shift();
-        lanzadasUser.shift();
+        }        
         console.log(lanzadasUser);
         var sumaDados = 0;
         for (var i=0; i < lanzadasUser.length; i++) {
-            
+            sumaDados = lanzadasUser[i] + Number(sumaDados);
+        }
+        h3.innerHTML =  '<h3>' + lanzadasUser + ' = ' + sumaDados + '</h3>';
+        //h3.appendChild(document.createTextNode(lanzadasUser + " = " + sumaDados));
+        console.log(lanzadasUser + " = " + sumaDados);
+    
+
+    } else if (!isNaN(cantidadDeDados.value) && tipoDeDado.value !== "x"){
+       for (var i = 0; i < cantidadDeDados.value; i++) {
+        var lanzada = Math.round(Math.random()*(tipoDeDado.value-1)+1);
+        console.log(Number(lanzada));
+            if (lanzadasUser === undefined) {
+            var lanzadasUser = [];
+            lanzadasUser.push(lanzada);
+            } else {
+                lanzadasUser.push(lanzada);
+            }
+        }        
+        console.log(lanzadasUser);
+        var sumaDados = 0;
+        for (var i=0; i < lanzadasUser.length; i++) {
             sumaDados = lanzadasUser[i] + Number(sumaDados);
         } 
-         console.log(lanzadasUser + " = " + sumaDados);
-    } else {
-        alert("La cantidad no es un numero valido!!")
-    }
-}
+        h3.innerHTML =  '<h3>' + lanzadasUser + ' = ' + sumaDados + '</h3>';
+        //h3.appendChild(document.createTextNode(lanzadasUser + " = " + sumaDados));
+        console.log(lanzadasUser + " = " + sumaDados);
+    } 
+} 
 
-randomizar(cantidadDeDados, encontrarTipo);
- 

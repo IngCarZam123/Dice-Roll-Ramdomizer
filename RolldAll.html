@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>RolldAll</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+
+	<body>
+		<header>
+			<span><a style="color: white" href="Index.html">HOME</a></span>  <a style="color: white" href="RolldAll.html">RolldAll</a>
+		</header>
+
+		<!--Solo Esqueleto para luego aplicar funciones de JavaScript -->
+		<div>
+			
+			<h2>
+				<label for="Nombre_lanzamiento">Nombre de Lanzamiento:</label> <input type="text" id="Nombre_lanzamiento" max="99" min="1">
+			</h2>
+			
+				<h4 style="color: white">
+            	<input id="cantidad" type="number"  placeholder="Cantidad"><select class="dice" id="diceSelector">
+	            	<option value=4  class="dice" >d4</option>
+	            	
+	            	<option value=6 class="dice" >d6</option>
+	            	
+	            	<option value=8 class="dice" >d8</option>
+
+	            	<option value=10 class="dice" >d10</option>
+
+	            	<option value=12 class="dice" >d12</option>
+
+	            	<option value=20 class="dice" >d20</option>
+	            	
+	            	<option value=100 class="dice" >d100</option>
+
+	            	<option value="x" class="dice" >dX</option>
+            	</select>			
+                = <h3></h3><h5></h5><br><br><br><button id="rollButton"  class="rollButton">ROLL</button><br><br>
+               
+               Seleccione Modo de Resultados:<br>
+               <input type="radio" >Sumatoria<br>
+               <input type="radio" >Mixto<br><br>
+
+               <input type="checkbox"> Indique valor de dificultad<br>
+               <input type="text" placeholder="Valor de Dificultad">
+
+				</h4>	
+			</div>
+		
+	</body>
+	<script type="text/javascript" src="DiceMotor Javascript.js"></script>
+</html>
